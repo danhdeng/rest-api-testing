@@ -1,3 +1,3 @@
-# rest-api-session-jwt-mongodb-ts
+# rest-api-testing
 
-build secure rest api with JWT authentication and cache the jwt token with session.
+implmented a testing cases against the rest-api-session-jwt-mongodb-ts project with testing library supertest and jest
