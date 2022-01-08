@@ -6,17 +6,17 @@ import {
     forgotPasswordHandler,
     getCurrentUserHandler,
     resetPasswordHandler,
-} from '@/controller/user.controller';
+} from '../controller/user.controller';
 
-import requireUser from '@/middleware/requireUser';
-import validateResources from '@/middleware/validateResource';
+import requireUser from '../middleware/requireUser';
+import validateResources from '../middleware/validateResource';
 import {
     createUserSchema,
     verifyUserSchema,
     forgotPasswordSchema,
     resetPasswordSchema,
-} from '@/schema/user.schema';
-import IRoute from '@/interface/route.interface';
+} from '../schema/user.schema';
+import IRoute from '../interface/route.interface';
 
 class UserRoute implements IRoute {
     public path = '/users';

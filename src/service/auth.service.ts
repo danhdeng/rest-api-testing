@@ -1,9 +1,9 @@
 import { DocumentType } from '@typegoose/typegoose';
-import SessionModel, { Session } from '@/models/session.model';
-import { privateFields, User } from '@/models/user.model';
+import SessionModel, { Session } from '../models/session.model';
+import { privateFields, User } from '../models/user.model';
 import { omit } from 'lodash';
 
-import { signJwt } from '@/utils/jwt.utils';
+import { signJwt } from '../utils/jwt.utils';
 
 export const createSession = async ({ userId }: { userId: string }) => {
     return SessionModel.create({ user: userId });

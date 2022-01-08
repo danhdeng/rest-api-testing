@@ -1,6 +1,6 @@
 import nodemailer, { SendMailOptions } from 'nodemailer';
 import config from 'config';
-import log from '@/utils/logger';
+import log from './logger';
 
 // async function createTestCredentials() {
 //     const creds = await nodemailer.createTestAccount();

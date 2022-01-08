@@ -2,12 +2,12 @@ import { Router } from 'express';
 import {
     createSessionHandler,
     refreshSessionHandler,
-} from '@/controller/auth.controller';
+} from '../controller/auth.controller';
 
-import validateResource from '@/middleware/validateResource';
+import validateResource from '../middleware/validateResource';
 
-import { CreateSessionSchema } from '@/schema/auth.schema';
-import IRoute from '@/interface/route.interface';
+import { CreateSessionSchema } from '../schema/auth.schema';
+import IRoute from '../interface/route.interface';
 class AuthRoute implements IRoute {
     public path = '/sessions';
     public router = Router();

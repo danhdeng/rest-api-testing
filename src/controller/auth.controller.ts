@@ -1,17 +1,17 @@
 import { DocumentType } from '@typegoose/typegoose';
 import { Request, Response } from 'express';
 import { get } from 'lodash';
-import { User } from '@/models/user.model';
-import { CreateSessionInput } from '@/schema/auth.schema';
+import { User } from '../models/user.model';
+import { CreateSessionInput } from '../schema/auth.schema';
 import {
     findSessionById,
     signAccessToken,
     singRefreshToken,
-} from '@/service/auth.service';
+} from '../service/auth.service';
 
-import { findUserByEmail, findUserById } from '@/service/user.service';
+import { findUserByEmail, findUserById } from '../service/user.service';
 
-import { verifyJwt } from '@/utils/jwt.utils';
+import { verifyJwt } from '../utils/jwt.utils';
 
 export const createSessionHandler = async (
     req: Request<{}, {}, CreateSessionInput>,

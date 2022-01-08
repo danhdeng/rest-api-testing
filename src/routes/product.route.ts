@@ -1,21 +1,21 @@
-import IRoute from '@/interface/route.interface';
+import IRoute from '../interface/route.interface';
 import { Router } from 'express';
-import validateResources from '@/middleware/validateResource';
-import requireUser from '@/middleware/requireUser';
+import validateResources from '../middleware/validateResource';
+import requireUser from '../middleware/requireUser';
 import {
     createProductHandler,
     updateProductHandler,
     deleteProductHandler,
     getProductHandler,
-} from '@/controller/product.controller';
+} from '../controller/product.controller';
 
 import {
     createProductSchema,
     updateProductSchema,
     deleteProductSchema,
     getProductSchema,
-} from '@/schema/product.schema';
-import validateResource from '@/middleware/validateResource';
+} from '../schema/product.schema';
+import validateResource from '../middleware/validateResource';
 class ProductRoute implements IRoute {
     public path = '/products';
     public router = Router();

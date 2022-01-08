@@ -4,19 +4,20 @@ import {
     UpdateProductInput,
     DeleteProductInput,
     GetProductInput,
-} from '@/schema/product.schema';
+} from '../schema/product.schema';
 import {
     createProduct,
     deleteProduct,
     findAndUpdateProduct,
     findProduct,
-} from '@/service/product.service';
+} from '../service/product.service';
 
 export const createProductHandler = async (
     req: Request<{}, {}, CreateProductInput>,
     res: Response
 ) => {
-    const userId = res.locals._id;
+    console.log('user Id is: ', res.locals._id);
+    const userId = res.locals.user._id;
     const body = req.body;
     const product = await createProduct({ ...body, user: userId });
     return res.send(product);

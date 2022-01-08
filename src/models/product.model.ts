@@ -5,7 +5,7 @@ import {
     modelOptions,
 } from '@typegoose/typegoose';
 // import { nanoid } from 'nanoid';
-import { User } from '@/models/user.model';
+import { User } from '../models/user.model';
 import { customAlphabet } from 'nanoid';
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 

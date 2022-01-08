@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
-import connectDB from '@/utils/connect';
-import IRoute from '@/interface/route.interface';
-import log from '@/utils/logger';
-import deserializeUser from '@/middleware/deserializeUser';
+import connectDB from './utils/connect';
+import IRoute from './interface/route.interface';
+import log from './utils/logger';
+import deserializeUser from './middleware/deserializeUser';
 
 class App {
     public express: Application;

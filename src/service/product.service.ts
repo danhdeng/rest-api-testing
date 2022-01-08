@@ -5,7 +5,7 @@ import {
     UpdateQuery,
 } from 'mongoose';
 
-import ProductModel, { Product } from '@/models/product.model';
+import ProductModel, { Product } from '../models/product.model';
 
 export const createProduct = async (input: Partial<Product>) => {
     return await ProductModel.create(input);

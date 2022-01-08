@@ -9,7 +9,7 @@ import {
 } from '@typegoose/typegoose';
 // import { nanoid } from 'nanoid';
 import argon2 from 'argon2';
-import log from '@/utils/logger';
+import log from '../utils/logger';
 import { customAlphabet } from 'nanoid';
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);

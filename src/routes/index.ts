@@ -1,6 +1,6 @@
-import HealthcheckRoute from '@/routes/healthcheck.route';
-import UserRoute from '@/routes/user.route';
-import AuthRoute from '@/routes/auth.route';
-import ProductRoute from '@/routes/product.route';
+import HealthcheckRoute from './healthcheck.route';
+import UserRoute from './user.route';
+import AuthRoute from './auth.route';
+import ProductRoute from './product.route';
 
 export { HealthcheckRoute, UserRoute, AuthRoute, ProductRoute };

@@ -3,15 +3,15 @@ import {
     VerifyUserInput,
     ForgotPasswordInput,
     ResetPasswordInput,
-} from '@/schema/user.schema';
+} from '../schema/user.schema';
 import { Request, Response } from 'express';
 import {
     createUser,
     findUserById,
     findUserByEmail,
-} from '@/service/user.service';
-import sendEmail from '@/utils/mailer';
-import log from '@/utils/logger';
+} from '../service/user.service';
+import sendEmail from '../utils/mailer';
+import log from '../utils/logger';
 // import { nanoid } from 'nanoid';
 
 import { customAlphabet } from 'nanoid';

@@ -1,6 +1,6 @@
 # installed required packages
 
-yarn add express zod config cors express mongoose pino pino-pretty dayjs bcrypt jsonwebtoken lodash nanoid module-alias nodemailer argon2 @typegoose/typegoose
+yarn add express zod config cors express mongoose pino pino-pretty dayjs bcrypt jsonwebtoken lodash nanoid module-alias nodemailer argon2 @typegoose/typegoose mongodb-memory-server
 
 # add all dependencies packages
 

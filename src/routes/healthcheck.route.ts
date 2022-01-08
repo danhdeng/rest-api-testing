@@ -1,4 +1,4 @@
-import IRoute from '@/interface/route.interface';
+import IRoute from '../interface/route.interface';
 import { Router, Request, Response } from 'express';
 
 class HealthcheckRoute implements IRoute {
