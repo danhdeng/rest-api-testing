@@ -2,11 +2,14 @@ import { DocumentType } from '@typegoose/typegoose';
 import SessionModel, { Session } from '../models/session.model';
 import { privateFields, User } from '../models/user.model';
 import { omit } from 'lodash';
+import log from '../utils/logger';
 
 import { signJwt } from '../utils/jwt.utils';
 
 export const createSession = async ({ userId }: { userId: string }) => {
-    return SessionModel.create({ user: userId });
+    const session = await SessionModel.create({ user: userId });
+    log.info(session.toJSON());
+    return session.toJSON();
 };
 
 export const findSessionById = async (id: string) => {

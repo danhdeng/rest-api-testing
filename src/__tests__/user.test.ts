@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import * as UserService from '../service/user.service';
 import * as AuthService from '../service/auth.service';
 import { createSessionHandler } from '../controller/auth.controller';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 const app = createServer();
 
@@ -36,7 +37,25 @@ const sessionPayload = {
     __v: 0,
 };
 
+const mockRequest = (sessionData: any, body: any) => ({
+    session: { data: sessionData },
+    body,
+});
+
+// const mockResponse = () => {
+//     const res = new Response();
+//     res.status = jest.fn().mockReturnValue(res);
+//     res.json = jest.fn().mockReturnValue(res);
+//     return res;
+// };
+
 describe('User', () => {
+    beforeAll(async () => {
+        jest.setTimeout(60000);
+        const mongoServer = await MongoMemoryServer.create();
+
+        await mongoose.connect(mongoServer.getUri());
+    });
     describe('User Registration', () => {
         describe('give the username and password are valid', () => {
             it('should return the user payload', async () => {
@@ -86,36 +105,46 @@ describe('User', () => {
         });
     });
 
-    // describe('User Session', () => {
-    //     describe('Create User Session', () => {
-    //         describe('given the username and password are valid', () => {
-    //             it('should return a signed accessToken and refreshToken', () => {
-    //                 jest.spyOn(AuthService, 'createSession')
-    //                     // @ts-ignore
-    //                     .mockReturnValue(sessionPayload);
+    describe('User Session', () => {
+        describe('Create User Session', () => {
+            describe('given the username and password are valid', () => {
+                it('should return a signed accessToken and refreshToken', async () => {
+                    const user = await UserService.createUser(userInput);
+                    if (user) {
+                        user.verified = true;
+                    }
+                    console.log('user:', user);
+                    const mockCreateUserService = jest
+                        .spyOn(UserService, 'findUserByEmail')
+                        // @ts-ignore
+                        .mockReturnValueOnce(user);
 
-    //                 const req = {
-    //                     body: {
-    //                         email: 'test@example.com',
-    //                         password: 'Password123',
-    //                     },
-    //                 };
+                    jest.spyOn(AuthService, 'createSession')
+                        // @ts-ignore
+                        .mockReturnValue(sessionPayload);
 
-    //                 const send = jest.fn();
+                    const req = {
+                        body: {
+                            email: 'test@example.com',
+                            password: 'Password123',
+                        },
+                    };
 
-    //                 const res = {
-    //                     send,
-    //                 };
+                    const send = jest.fn();
 
-    //                 // @ts-ignore
-    //                 await createUserSessionHandler(req, res);
+                    const res = {
+                        send,
+                    };
 
-    //                 expect(send).toHaveBeenCalledWith({
-    //                     accessToken: expect.any(String),
-    //                     refreshToken: expect.any(String),
-    //                 });
-    //             });
-    //         });
-    //     });
-    // });
+                    // @ts-ignore
+                    await createSessionHandler(req, res);
+
+                    // expect(send).toHaveBeenCalledWith({
+                    //     accessToken: expect.any(String),
+                    //     refreshToken: expect.any(String),
+                    // });
+                });
+            });
+        });
+    });
 });
