@@ -1,13 +1,6 @@
-import express from 'express';
 import supertest from 'supertest';
 import createServer from '../utils/server';
 import { signJwt } from '../utils/jwt.utils';
-import {
-    HealthcheckRoute,
-    UserRoute,
-    AuthRoute,
-    ProductRoute,
-} from '../routes/index';
 import config from 'config';
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
@@ -84,7 +77,7 @@ describe('Product', () => {
             it('should return a 200 status and create the product', async () => {
                 const jwt = signJwt(userPayload, 'accessTokenPrivateKey');
                 const { body, statusCode } = await supertest(app)
-                    .post(`/api/products/`)
+                    .post(`/api/products`)
                     .set('Authorization', `Bearer ${jwt}`)
                     .send(productPayload);
                 expect(statusCode).toBe(200);

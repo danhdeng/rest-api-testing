@@ -1,7 +1,12 @@
+import { Error } from 'mongoose';
 import UserModel, { User } from '../models/user.model';
 
 export const createUser = (input: Partial<User>) => {
-    return UserModel.create(input);
+    try {
+        return UserModel.create(input);
+    } catch (e: any) {
+        throw new Error(e);
+    }
 };
 
 export const findUserById = (id: string) => {

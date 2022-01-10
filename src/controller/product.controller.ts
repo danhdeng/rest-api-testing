@@ -16,7 +16,6 @@ export const createProductHandler = async (
     req: Request<{}, {}, CreateProductInput>,
     res: Response
 ) => {
-    console.log('user Id is: ', res.locals._id);
     const userId = res.locals.user._id;
     const body = req.body;
     const product = await createProduct({ ...body, user: userId });

@@ -21,7 +21,6 @@ export const createUserHandler = async (
     res: Response
 ) => {
     const body = req.body;
-    log.info(body, 'create user body');
     try {
         const user = await createUser(body);
         await sendEmail({
@@ -30,12 +29,14 @@ export const createUserHandler = async (
             subject: 'Verify your email',
             text: `verfication code: ${user.verificationCode}. Id: ${user._id}`,
         });
-        return res.send('User successully created');
+        return res.send(user);
     } catch (e: any) {
-        if (e.code === 11000) {
-            return res.status(409).send('Account already exists');
-        }
-        return res.status(500).send(e);
+        log.error(e);
+        return res.status(409).send(e.message);
+        // if (e.code === 11000) {
+        //     return res.status(409).send('Account already exists');
+        // }
+        // return res.status(500).send(e);
     }
 };
 
