@@ -9,3 +9,8 @@ Routes ---> Middleware --> Controller -- Services ---> Model ---> MongoDB
 # --watchAll to watch all change and restart the test
 
 jest --watchAll --detectOpenHandles
+
+# to generate the public key and private key for jwt generation
+
+Generate new keys: https://travistidwell.com/jsencrypt/demo/
+Base64 encode the keys: https://www.base64encode.org/

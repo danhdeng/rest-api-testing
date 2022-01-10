@@ -139,10 +139,10 @@ describe('User', () => {
                     // @ts-ignore
                     await createSessionHandler(req, res);
 
-                    // expect(send).toHaveBeenCalledWith({
-                    //     accessToken: expect.any(String),
-                    //     refreshToken: expect.any(String),
-                    // });
+                    expect(send).toHaveBeenCalledWith({
+                        accessToken: expect.any(String),
+                        refreshToken: expect.any(String),
+                    });
                 });
             });
         });
